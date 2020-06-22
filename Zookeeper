@@ -121,27 +121,32 @@ It seems there will be more rabbits soon!"""
 
 animals = [camel, lion, deer, goose, bat, rabbit]
 
+# write your code here
+
 print("""Which habitat # do you need? (0 - 5)
 If you want to exit - please type: exit""")
-animal = input("> ")
+habitat = input("> ")
 
-while animal in ["0", "1", "2", "3", "4", "5"]:
-    animal = int(animal)
-    print(animals[animal])
-    print("Which habitat # do you need?")
-    animal = input()
-if animal == "exit":
+while habitat in ["0", "1", "2", "3", "4", "5"]:
+    habitat = int(habitat)
+    print(animals[habitat])
+    print("""Which habitat # do you need? (0 - 5)
+If you want to exit - please type: exit""")
+    habitat = input()
+if habitat == "exit":
     print("See you!")
-if animal not in ["0", "1", "2", "3", "4", "5", "exit"]:
+if habitat not in ["0", "1", "2", "3", "4", "5", "exit"]:
     print("There is no such habitat. Please choose between 0 and 5.")
-    print("Which habitat # do you need?")
-    animal = input()
-    while animal in ["0", "1", "2", "3", "4", "5"]:
-        animal = int(animal)
-        print(animals[animal])
-        print("Which habitat # do you need?")
-        animal = input()
-        if animal not in ["0", "1", "2", "3", "4", "5", "exit"]:
-            print("Second incorrect insertion. Program is shutting down.")
-    if animal == "exit":
+    print("""Which habitat # do you need? (0 - 5)
+If you want to exit - please type: exit""")
+    habitat = input()
+    while habitat in ["0", "1", "2", "3", "4", "5"]:
+        habitat = int(habitat)
+        print(animals[habitat])
+        print("""Which habitat # do you need? (0 - 5)
+If you want to exit - please type: exit""")
+        habitat = input()
+    if habitat not in ["0", "1", "2", "3", "4", "5", "exit"]:
+            print("Second inadequate insertion. Program is shutting down.")
+    if habitat == "exit":
         print("See you!")
