@@ -119,7 +119,6 @@ Switching on camera from habitat with rabbits...
 (" ~----( ~   Y.  )
 It seems there will be more rabbits soon!"""
 
-
 animals = [camel, lion, deer, goose, bat, rabbit]
 
 # write your code here
@@ -129,22 +128,22 @@ If you want to exit - please type: exit""")
 animal = input("> ")
 
 while animal in ["0", "1", "2", "3", "4", "5"]:
-   animal = int(animal)
-   print(animals[animal])
-   print("Which habitat # do you need?")
-   animal = input()
+    animal = int(animal)
+    print(animals[animal])
+    print("Which habitat # do you need?")
+    animal = input()
 if animal == "exit":
-   print("See you!")
+    print("See you!")
 if animal not in ["0", "1", "2", "3", "4", "5", "exit"]:
-   print("There is no such habitat. Please choose between 0 and 5.")
-   print("Which habitat # do you need?")
-   animal = input()
-   while animal in ["0", "1", "2", "3", "4", "5"]:
-      animal = int(animal)
-      print(animals[animal])
-      print("Which habitat # do you need?")
-      animal = input()
-      if animal == "exit":
-         print("See you!")
-      if animal not in ["0", "1", "2", "3", "4", "5", "exit"]:
-         print("Second inadequate insertion. Program is shutting down.")
+    print("There is no such habitat. Please choose between 0 and 5.")
+    print("Which habitat # do you need?")
+    animal = input()
+    while animal in ["0", "1", "2", "3", "4", "5"]:
+        animal = int(animal)
+        print(animals[animal])
+        print("Which habitat # do you need?")
+        animal = input()
+        if animal == "exit":
+            print("See you!")
+        if animal not in ["0", "1", "2", "3", "4", "5", "exit"]:
+            print("Second inadequate insertion. Program is shutting down.")
