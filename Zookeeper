@@ -143,7 +143,7 @@ if animal not in ["0", "1", "2", "3", "4", "5", "exit"]:
         print(animals[animal])
         print("Which habitat # do you need?")
         animal = input()
-        if animal == "exit":
-            print("See you!")
         if animal not in ["0", "1", "2", "3", "4", "5", "exit"]:
             print("Second inadequate insertion. Program is shutting down.")
+    if animal == "exit":
+        print("See you!")
