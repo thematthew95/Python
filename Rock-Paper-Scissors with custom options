@@ -1,0 +1,87 @@
+# Write your code here
+import random
+
+decider = {"scissors": "rock", 'rock': 'paper', 'paper': 'scissors'}
+game_options = ['scissors', 'rock', 'paper']
+
+def get_scores():
+    ratings = open('rating.txt').readlines()
+    scores = {}
+    for rating in ratings:
+        player, score = rating.strip().split(' ')
+        scores[player] = score
+    return scores
+
+def save_scores(scores):
+    with open('rating.txt', 'w') as f:
+       for name, score in scores.items():
+           f.write(f'{name} {score}\n')
+
+def main():
+    player_name = input('Enter your name: > ')
+    print(f'Hello {player_name}')
+
+    all_scores = get_scores()
+    player_score = all_scores.get(player_name, 0)
+
+    game_mode = input()
+    print("Okay, let's start")
+
+    if game_mode == "":
+        while True:
+            user_choice = input()
+            if user_choice == '!exit':
+                all_scores[player_name] = player_score
+                save_scores(all_scores)
+                print('Bye!')
+                break
+            elif user_choice == '!rating':
+                print(player_score)
+            elif user_choice in game_options:
+                computer_choice = random.choice(game_options)
+                if user_choice == computer_choice:
+                    print(f'There is a draw {user_choice}')
+                    result = 50
+                elif decider[user_choice] == computer_choice:
+                    print(f'Sorry but computer chose {computer_choice}')
+                    result = 0
+                elif decider[computer_choice] == user_choice:
+                    print(f'Well done. Computer chose {computer_choice} and failed')
+                    result = 100
+                player_score += result
+            else:
+                print('Invalid Input')
+    else:
+        new_options = game_mode.split(",")
+        while True:
+            user_choice = input()
+            computer_choice = random.choice(new_options)
+            if user_choice == '!exit':
+                all_scores[player_name] = player_score
+                save_scores(all_scores)
+                print('Bye!')
+                break
+            elif user_choice == '!rating':
+                print(player_score)
+            elif user_choice == computer_choice:
+                print(f'There is a draw {user_choice}')
+                result = 50
+                player_score += result
+            elif user_choice in new_options and user_choice != computer_choice:
+                index_to = new_options.index(user_choice)
+                index_from = index_to + 1
+                decider_options_after = new_options[index_from:]
+                decider_options_before = new_options[:index_to]
+                decider_options = decider_options_after + decider_options_before
+                half = len(decider_options) // 2
+                if computer_choice in decider_options[half:]:
+                    print(f'Well done. Computer chose {computer_choice} and failed')
+                    result = 100
+                else:
+                    print(f'Sorry but computer chose {computer_choice}')
+                    result = 0
+                player_score += result
+            else:
+                print('Invalid Input')
+
+main()
